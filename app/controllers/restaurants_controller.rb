@@ -15,4 +15,9 @@ class RestaurantsController < ApplicationController
             render json: { error: "Restaurant not found"}, status: :not_found
         end
     end
+
+    def create 
+        restaurant = Restaurant.create(name: params[:name], cuisine_type: params[:cuisine_type], rating: params[:rating], delivery: params[:delivery])
+        render json: restaurant, status: :created
+    end
 end
