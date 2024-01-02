@@ -4,9 +4,12 @@ import './index.css';
 import App from '/home/gcamoin/phase-4-project/client/src/components/App.js';
 import reportWebVitals from './reportWebVitals';
 
+
 ReactDOM.render(
   <React.StrictMode>
+    
     <App />
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
