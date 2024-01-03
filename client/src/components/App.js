@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react"
 import Header from "/home/gcamoin/phase-4-project/client/src/components/Header.js"
 import RestaurantContainer from "/home/gcamoin/phase-4-project/client/src/components/RestaurantContainer.js"
 
+
 function App() {
 
   const [restaurants, setRestaurants] = useState([])

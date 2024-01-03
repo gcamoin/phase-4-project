@@ -4,8 +4,8 @@ function RestaurantCard({restaurant}) {
     const {name, cuisine_type, rating, image} = restaurant
 
     return (
-        <div className="restaurants" style={{margin: "50px", fontFamily:"cursive"}}>
-            <h1 className="restaurant-cards">
+        <div className="restaurants" style={{margin: "30px", fontFamily:"cursive", alignContent: "center"}}>
+            <h1 className="restaurant-names">
                 {name}
             </h1>
             <img src={image}  alt="restaurant" />

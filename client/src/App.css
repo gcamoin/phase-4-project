@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+.restaurants {
+  display: block;
+  margin-left:auto;
+  margin-right: auto;
+  width: 35%;
+  font-size: 150%;
+  image-rendering: optimizeQuality;
+}
+
+.header {
+  margin-bottom: 10%;
+}
+
+.restaurant-names {
+  text-decoration: underline;
+  font-size: 170%;
+}
