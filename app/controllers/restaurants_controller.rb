@@ -4,13 +4,13 @@ class RestaurantsController < ApplicationController
 
     def index
         restaurants = Restaurant.all
-        render json: restaurants
+        render json: restaurants, include: ['reviews', 'reviews.user']
     end
 
     def show
         restaurant = Restaurant.find_by(id: params[:id])
         if restaurant
-            render json: restaurant
+            render json: restaurant, include: ['reviews', 'reviews.user']
         else
             render json: { error: "Restaurant not found" }, status: :not_found
         end
