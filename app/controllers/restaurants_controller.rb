@@ -18,6 +18,10 @@ class RestaurantsController < ApplicationController
 
     def create 
         restaurant = Restaurant.create(name: params[:name], cuisine_type: params[:cuisine_type], image: params[:image])
-        render json: restaurant, status: :created
+        if restaurant.valid?
+            render json: restaurant, status: :created
+        else
+            render json: {error: restaurant.errors}, status: :unprocessable_entity
+        end
     end
 end
