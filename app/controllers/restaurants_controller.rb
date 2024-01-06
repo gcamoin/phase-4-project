@@ -17,7 +17,7 @@ class RestaurantsController < ApplicationController
     end
 
     def create 
-        restaurant = Restaurant.create(name: params[:name], cuisine_type: params[:cuisine_type], rating: params[:rating], image: params[:image])
+        restaurant = Restaurant.create(name: params[:name], cuisine_type: params[:cuisine_type], image: params[:image])
         render json: restaurant, status: :created
     end
 end

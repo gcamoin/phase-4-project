@@ -1,6 +1,6 @@
 import {React, useState} from "react"
 
-function AddRestaurantForm() {
+function AddRestaurantForm({handleAddRestaurant}) {
     const [name, setName] = useState("")
     const [cuisineType, setCuisineType] = useState("")
     const [image, setImage] = useState("")
@@ -17,11 +17,39 @@ function AddRestaurantForm() {
         setImage(e.target.value)
     }
 
+    
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        fetch("http://localhost:3000/restaurants", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: name,
+                cusine_type: cuisineType,
+                image: image
+                
+                
+                
+               
+
+
+            }),
+        })
+        .then((r) => r.json())
+        .then((restaurantToAdd) => handleAddRestaurant(restaurantToAdd))
+        
+    }
+
+
+
 
     return (
-        <div classname="add-restaurant-form">
+        <div className="add-restaurant-form">
             <h2>Add Restaurant</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input 
                     type="text"
                     placeholder="name of restaurant"
