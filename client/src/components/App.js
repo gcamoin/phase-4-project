@@ -21,7 +21,7 @@ function App() {
   if (user) {
     return <div className="logged-in page"><Header/><RestaurantContainer/></div>;
   } else {
-    return <div className="login-page"><Header/><Login onLogin={setUser} /> <SignUp onLogin={setUser}/></div>;
+    return <div className="login-page"><Header/><Login onLogin={setUser} /> <br></br> <SignUp onLogin={setUser}/></div>;
   }
 
   // const [restaurants, setRestaurants] = useState([])

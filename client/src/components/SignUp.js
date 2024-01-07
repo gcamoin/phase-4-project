@@ -8,7 +8,7 @@ function SignUp({onLogin}) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        fetch("/login", {
+        fetch("/signup", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -20,6 +20,8 @@ function SignUp({onLogin}) {
       }
     
       return (
+        <div className='signup'>
+            <h2>SignUp</h2>
         <form onSubmit={handleSubmit}>
           <label>Username</label>
           <br></br>
@@ -39,8 +41,9 @@ function SignUp({onLogin}) {
               onChange={(e) => setPassword(e.target.value)}
           />
           <br></br>
-          <button type="submit">Login</button>
+          <button type="submit">Sign Up</button>
         </form>
+        </div>
       );
 }
 
