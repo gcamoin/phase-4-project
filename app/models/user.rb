@@ -3,5 +3,5 @@ class User < ApplicationRecord
     has_many :restaurants, through: :reviews
 
     validates :user_name, uniqueness: true
-    validates :password, length:{minimum: 5}
+    validates :password_digest, length:{minimum: 5}
 end

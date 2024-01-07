@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react"
 import Header from "/home/gcamoin/phase-4-project/client/src/components/Header.js"
 import RestaurantContainer from "/home/gcamoin/phase-4-project/client/src/components/RestaurantContainer.js"
 import Login from "/home/gcamoin/phase-4-project/client/src/components/Login.js"
+import SignUp from "/home/gcamoin/phase-4-project/client/src/components/SignUp.js"
 
 
 
@@ -20,7 +21,7 @@ function App() {
   if (user) {
     return <div className="logged-in page"><Header/><RestaurantContainer/></div>;
   } else {
-    return <div className="login-page"><Header/><Login onLogin={setUser} /></div>;
+    return <div className="login-page"><Header/><Login onLogin={setUser} /> <SignUp onLogin={setUser}/></div>;
   }
 
   // const [restaurants, setRestaurants] = useState([])
