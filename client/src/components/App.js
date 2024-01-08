@@ -3,7 +3,7 @@ import Header from "/home/gcamoin/phase-4-project/client/src/components/Header.j
 import RestaurantContainer from "/home/gcamoin/phase-4-project/client/src/components/RestaurantContainer.js"
 import Login from "/home/gcamoin/phase-4-project/client/src/components/Login.js"
 import SignUp from "/home/gcamoin/phase-4-project/client/src/components/SignUp.js"
-
+import NavBar from "/home/gcamoin/phase-4-project/client/src/components/NavBar.js"
 
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
   }, []);
 
   if (user) {
-    return <div className="logged-in page"><Header/><RestaurantContainer/></div>;
+    return <div className="logged-in page"><Header/><NavBar user={user} setUser={setUser}/><RestaurantContainer/></div>;
   } else {
     return <div className="login-page"><Header/><Login onLogin={setUser} /> <br></br> <SignUp onLogin={setUser}/></div>;
   }

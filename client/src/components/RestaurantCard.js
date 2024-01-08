@@ -1,16 +1,20 @@
 import React from "react"
 import Review from "/home/gcamoin/phase-4-project/client/src/components/Review.js"
+import AddReviewForm from "/home/gcamoin/phase-4-project/client/src/components/AddReviewForm.js"
+
 
 
 function RestaurantCard({restaurant}) {
     const {name, cuisine_type, rating, image, reviews} = restaurant
-
+    
     const restaurantReviews = reviews?.map((review) => (
         <Review 
             key={review.id}
             review={review}
         />
     ))
+
+    
 
     
 
@@ -26,6 +30,8 @@ function RestaurantCard({restaurant}) {
             <h4>Reviews</h4>
             </div>
             {restaurantReviews}
+            <AddReviewForm/>
+            
             
         </div>
         
