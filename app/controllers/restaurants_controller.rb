@@ -21,7 +21,7 @@ class RestaurantsController < ApplicationController
         if restaurant.valid?
             render json: restaurant, status: :created
         else
-            render json: {error: restaurant.errors}, status: :unprocessable_entity
+            render json: {errors: restaurant.errors.full_messages}, status: :unprocessable_entity
         end
     end
 end

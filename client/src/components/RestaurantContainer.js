@@ -6,7 +6,7 @@ function RestaurantContainer({}) {
     const [restaurants, setRestaurants] = useState([])
 
     useEffect(() => {
-      fetch("http://localhost:3000/restaurants")
+      fetch("/restaurants")
       .then((r) => r.json())
       .then(setRestaurants)
     }, []);
@@ -25,7 +25,7 @@ function RestaurantContainer({}) {
 
     return (
         <div className="restaurant_list">
-            <AddRestaurantForm handleAddrestaurant={handleAddRestaurant}/>
+            <AddRestaurantForm handleAddRestaurant={handleAddRestaurant}/>
             {restaurantList}
         </div>
     )

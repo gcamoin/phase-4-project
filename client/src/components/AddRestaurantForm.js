@@ -21,14 +21,14 @@ function AddRestaurantForm({handleAddRestaurant}) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        fetch("http://localhost:3000/restaurants", {
+        fetch("/restaurants", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
                 name: name,
-                cusine_type: cuisineType,
+                cuisine_type: cuisineType,
                 image: image
                 
                 
