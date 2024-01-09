@@ -1,8 +1,10 @@
 import {React, useState} from "react"
 
+
 function Login({ onLogin }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("")
+    const [errors, setErrors] = useState([])
   
     function handleSubmit(e) {
       e.preventDefault();
@@ -13,8 +15,15 @@ function Login({ onLogin }) {
         },
         body: JSON.stringify({ username, password }),
       })
-        .then((r) => r.json())
-        .then((user) => onLogin(user));
+        .then((r) => { 
+          if(r.ok) {
+            r.json().then((user) => onLogin(user));
+          } else {
+            r.json().then((err)=>setErrors(err.errors))
+          }
+
+        })
+        
     }
   
     return (
@@ -40,6 +49,8 @@ function Login({ onLogin }) {
         />
         <br></br>
         <button type="submit">Login</button>
+        <br></br>
+        <h3 style={{color: "red"}}>{errors}</h3>
       </form>
       </div>
     );

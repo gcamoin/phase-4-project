@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from "react"
+import {React, useState} from "react"
 
 
 function AddReviewForm() {
@@ -6,11 +6,7 @@ function AddReviewForm() {
     const [content, setContent] = useState("")
     const [reviews, setReviews] =useState([])
 
-    useEffect(() => {
-        fetch("/reviews")
-        .then((r) => r.json())
-        .then(setReviews)
-      }, []);
+    
 
       function handleAddReview(newReview) {
         setReviews([...reviews, newReview])

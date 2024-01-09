@@ -61,10 +61,14 @@
 
 .login {
   margin-left: 5%;
+ h2 {
   text-decoration: underline;
+ }
 }
 
 .signup {
   margin-left: 5%;
-  text-decoration: underline;
+  h2 {
+    text-decoration: underline;
+  }
 }
