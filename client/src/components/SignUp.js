@@ -5,6 +5,8 @@ import React, { useState } from "react";
 function SignUp({onLogin}) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [passwordConfirmation, setPasswordConfirmation] = useState("")
+    const [errors, setErrors] = useState([])
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -13,11 +15,23 @@ function SignUp({onLogin}) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ username, password }),
+          body: JSON.stringify({
+             user_name: username,
+              password,
+              password_confirmation: passwordConfirmation, 
+            
+            }),
+        }).then((r) => { 
+          if(r.ok) {
+            r.json().then((user) => onLogin(user));
+          } else {
+            r.json().then((err)=>setErrors(err.errors))
+          }
+
         })
-          .then((r) => r.json())
-          .then((user) => onLogin(user));
-      }
+        
+    }
+      
     
       return (
         <div className='signup'>
@@ -41,7 +55,17 @@ function SignUp({onLogin}) {
               onChange={(e) => setPassword(e.target.value)}
           />
           <br></br>
+          <label>Confirm Password</label>
+          <br></br>
+          <input 
+            type="text"
+            placeholder="confirm password"
+            value={passwordConfirmation}
+            onChange={(e) => setPasswordConfirmation(e.target.value)}
+          />
+          <br></br>
           <button type="submit">Sign Up</button>
+          <h3 style={{color:"red"}}>{errors}</h3>
         </form>
         </div>
       );
