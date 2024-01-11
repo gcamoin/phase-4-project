@@ -15,12 +15,29 @@ function RestaurantContainer({}) {
         <RestaurantCard 
             key={restaurant.id}
             restaurant={restaurant}
+            handleAddReview={handleAddReview}
         
         />
     ));
 
     function handleAddRestaurant(newRestaurant) {
         setRestaurants([...restaurants, newRestaurant])
+    }
+
+    function handleAddReview(reviewToAdd) {
+        console.log(reviewToAdd)
+        const addedReview = restaurants.map((restaurant) => {
+            if(restaurant.id === reviewToAdd.restaurant_id) {
+            const updatedReviews = [...restaurant.reviews, reviewToAdd]
+            const updatedRestaurant = {...restaurant, reviews:updatedReviews}
+            return updatedRestaurant
+            } else {
+                return restaurant
+            }
+        })
+
+        setRestaurants(addedReview)
+
     }
 
     return (

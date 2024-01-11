@@ -1,24 +1,18 @@
 import React from "react"
+import {Link} from "react-router-dom"
 
-function NavBar({ user, setUser }) {
-    function handleLogoutClick() {
-      fetch("/logout", { method: "DELETE" }).then((r) => {
-        if (r.ok) {
-          setUser(null);
-        }
-      });
+    function NavBar() {
+        return (
+            <nav className="nav" >
+                <Link to="/about">About</Link><br />
+                <Link to="/addrestaurant">Add Restaurant</Link><br />
+                
+            
+            </nav>
+        )
     }
 
-    return (
-    <wrapper>
-        <nav>
-            <button onClick={handleLogoutClick}>
-                Logout
-            </button>
-        </nav>
-    </wrapper>
-    )
-}
-  
 
-export default NavBar
+
+
+export default NavBar;

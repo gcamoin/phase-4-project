@@ -8,7 +8,7 @@ class RestaurantsController < ApplicationController
     end
 
     def show
-        restaurant = Restaurant.find_by(id: params[:id])
+        restaurant = Restaurant.all(id: params[:id])
         if restaurant
             render json: restaurant, include: ['reviews', 'reviews.user']
         else

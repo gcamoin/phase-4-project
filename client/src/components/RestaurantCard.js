@@ -4,13 +4,15 @@ import AddReviewForm from "/home/gcamoin/phase-4-project/client/src/components/A
 
 
 
-function RestaurantCard({restaurant}) {
+
+function RestaurantCard({restaurant, handleAddReview}) {
     const {name, cuisine_type, rating, image, reviews} = restaurant
-    
+
     const restaurantReviews = reviews?.map((review) => (
         <Review 
             key={review.id}
             review={review}
+
         />
     ))
 
@@ -30,7 +32,8 @@ function RestaurantCard({restaurant}) {
             <h4>Reviews</h4>
             </div>
             {restaurantReviews}
-            <AddReviewForm/>
+            <AddReviewForm handleAddReview={handleAddReview} restaurantID={restaurant.id}/>
+           
             
             
         </div>
