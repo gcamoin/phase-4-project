@@ -16,6 +16,7 @@ function RestaurantContainer({}) {
             key={restaurant.id}
             restaurant={restaurant}
             handleAddReview={handleAddReview}
+            // handleUpdateReview={handleUpdateReview}
         
         />
     ));
@@ -39,6 +40,28 @@ function RestaurantContainer({}) {
         setRestaurants(addedReview)
 
     }
+
+    // function handleUpdateReview(reviewToUpdate) {
+    //     const updatedReviewArray = restaurants.map((restaurant) => {
+    //        if() {
+    //       const updatedReviews = restaurant.reviews.map((review) => {
+    //         if(restaurant.id === reviewToUpdate.restaurant_id) {
+    //           return reviewToUpdate
+    //         } else {
+    //           return review
+    //         }
+    //       })
+    //       const updatedRestaurant = {...restaurant, reviews:updatedReviews}
+    //     return updatedRestaurant
+          
+    //     } else {
+    //       return restaurant
+    //     }}
+          
+    //   )
+    //     setRestaurants(updatedReviewArray)
+    //   }
+
 
     return (
         <div className="restaurant_list">

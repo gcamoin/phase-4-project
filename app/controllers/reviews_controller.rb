@@ -11,6 +11,16 @@ class ReviewsController < ApplicationController
         
     end
 
+    def update
+        review = Review.find_by(id: params[:id])
+        if review
+            review.update(review_params)
+            render json: review
+        else
+            render json: { error: "Review not found"}, status: :not_found
+        end
+    end
+
     def create 
         review = @current_user.reviews.create(review_params)
         if review.valid?
