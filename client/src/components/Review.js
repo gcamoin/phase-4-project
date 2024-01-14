@@ -1,7 +1,7 @@
 import {React, useState} from "react"
 
 
-function Review({review}) {
+function Review({review, handleDeleteReview}) {
     const {id, content} = review
     const [editReview, setEditReview] = useState(false)
     const [editContent, setEditContent] = useState(content)
@@ -25,7 +25,16 @@ function Review({review}) {
     // }
 
 
-
+    function deleteReview() {
+        fetch(`/reviews/${id}`, {
+            method: "DELETE",
+        }).then((r) => {
+            if (r.ok) {
+                handleDeleteReview(id);
+            }
+        });
+        
+    }
 
 
 return (
@@ -45,6 +54,7 @@ return (
        
         
         <button onClick={() => setEditReview(!editReview)}>Edit Review</button>
+        <button onClick={deleteReview}>Delete</button>
         
         
   

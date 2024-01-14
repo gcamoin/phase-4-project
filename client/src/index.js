@@ -4,16 +4,16 @@ import './index.css';
 import App from '/home/gcamoin/phase-4-project/client/src/components/App.js';
 import reportWebVitals from './reportWebVitals';
 import "./App.css";
-// import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 
 
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <BrowserRouter> */}
+    <BrowserRouter>
     <App />
-    {/* </BrowserRouter> */}
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

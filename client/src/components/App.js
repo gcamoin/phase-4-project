@@ -4,9 +4,8 @@ import RestaurantContainer from "/home/gcamoin/phase-4-project/client/src/compon
 import Login from "/home/gcamoin/phase-4-project/client/src/components/Login.js"
 import SignUp from "/home/gcamoin/phase-4-project/client/src/components/SignUp.js"
 import Logout from "/home/gcamoin/phase-4-project/client/src/components/Logout.js"
-// import { Routes, Route } from "react-router-dom";
-// import AddReviewForm from "/home/gcamoin/phase-4-project/client/src/components/AddReviewForm.js"
-// import NavBar from "/home/gcamoin/phase-4-project/client/src/components/NavBar.js"
+import { Routes, Route } from "react-router-dom";
+import NavBar from "/home/gcamoin/phase-4-project/client/src/components/NavBar.js"
 import About from "/home/gcamoin/phase-4-project/client/src/components/About.js"
 
 
@@ -14,6 +13,8 @@ function App() {
  
 
   const [user, setUser] = useState(null);
+
+  
 
   useEffect(() => {
     fetch("/me").then((response) => {
@@ -27,13 +28,13 @@ function App() {
     return ( 
     <div className="logged-in page">
       <Header/>
-      {/* <NavBar/> */}
+      <NavBar/>
       <Logout user={user} setUser={setUser}/>
-      <RestaurantContainer/>
-      {/* <Routes> */}
-        {/* <About/> */}
-        {/* <AddReviewForm/> */}
-      {/* </Routes> */}
+      <Routes>
+       <Route path="/about" element={<About/>} /> 
+       <Route path="/" element={<RestaurantContainer/>} />
+      </Routes>
+      
     </div>
     )
   } else {

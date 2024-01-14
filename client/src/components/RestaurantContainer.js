@@ -4,7 +4,7 @@ import AddRestaurantForm from "/home/gcamoin/phase-4-project/client/src/componen
 
 function RestaurantContainer({}) {
     const [restaurants, setRestaurants] = useState([])
-
+console.log(restaurants)
     useEffect(() => {
       fetch("/restaurants")
       .then((r) => r.json())
@@ -17,6 +17,7 @@ function RestaurantContainer({}) {
             restaurant={restaurant}
             handleAddReview={handleAddReview}
             // handleUpdateReview={handleUpdateReview}
+            handleDeleteReview={handleDeleteReview}
         
         />
     ));
@@ -27,7 +28,7 @@ function RestaurantContainer({}) {
 
     function handleAddReview(reviewToAdd) {
         console.log(reviewToAdd)
-        const addedReview = restaurants.map((restaurant) => {
+        const updatedRestaurants = restaurants.map((restaurant) => {
             if(restaurant.id === reviewToAdd.restaurant_id) {
             const updatedReviews = [...restaurant.reviews, reviewToAdd]
             const updatedRestaurant = {...restaurant, reviews:updatedReviews}
@@ -36,8 +37,9 @@ function RestaurantContainer({}) {
                 return restaurant
             }
         })
-
-        setRestaurants(addedReview)
+        console.log(updatedRestaurants)
+        setRestaurants(updatedRestaurants)
+        
 
     }
 
@@ -61,6 +63,23 @@ function RestaurantContainer({}) {
     //   )
     //     setRestaurants(updatedReviewArray)
     //   }
+
+    function handleDeleteReview(reviewToDelete) {
+
+        const updatedRestaurants = restaurants.map((restaurant) => {
+            if(restaurant.id === reviewToDelete.restaurant_id) {
+                const updatedReviews = restaurant.reviews.filter((review) => reviewToDelete.id !== review.id)
+                const updatedRestaurant = {...restaurant, reviews:updatedReviews}
+                return updatedRestaurant
+
+            } else {
+                return restaurant
+            }
+        })
+
+        setRestaurants(updatedRestaurants)
+        
+    }
 
 
     return (

@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
         return (
             <nav className="nav" >
                 <Link to="/about">About</Link><br />
-                <Link to="/addrestaurant">Add Restaurant</Link><br />
+                <Link to="/">Home</Link>
                 
             
             </nav>
