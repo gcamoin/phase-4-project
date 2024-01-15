@@ -27,7 +27,7 @@ console.log(restaurants)
     }
 
     function handleAddReview(reviewToAdd) {
-        console.log(reviewToAdd)
+        
         const updatedRestaurants = restaurants.map((restaurant) => {
             if(restaurant.id === reviewToAdd.restaurant_id) {
             const updatedReviews = [...restaurant.reviews, reviewToAdd]
@@ -37,7 +37,7 @@ console.log(restaurants)
                 return restaurant
             }
         })
-        console.log(updatedRestaurants)
+        
         setRestaurants(updatedRestaurants)
         
 
@@ -65,9 +65,9 @@ console.log(restaurants)
     //   }
 
     function handleDeleteReview(reviewToDelete) {
-
+        console.log(reviewToDelete)
         const updatedRestaurants = restaurants.map((restaurant) => {
-            if(restaurant.id === reviewToDelete.restaurant_id) {
+            if(restaurant.id === reviewToDelete.review_id) {
                 const updatedReviews = restaurant.reviews.filter((review) => reviewToDelete.id !== review.id)
                 const updatedRestaurant = {...restaurant, reviews:updatedReviews}
                 return updatedRestaurant
@@ -76,7 +76,7 @@ console.log(restaurants)
                 return restaurant
             }
         })
-
+        console.log(updatedRestaurants)
         setRestaurants(updatedRestaurants)
         
     }

@@ -6,7 +6,7 @@ function Contact() {
     return (
         <div>
             <h1>Contact</h1>
-            <p>email - gcamoin5@gmail.com</p>
+            <p>Email - gcamoin5@gmail.com</p>
 
             <form>
                 <input 
@@ -16,7 +16,10 @@ function Contact() {
                     onChange={(e) => setText(e.target.value)}
 
                 />
+                <button>Submit</button>
             </form>
         </div>
     )
 }
+
+export default Contact;

@@ -5,6 +5,7 @@ function Review({review, handleDeleteReview}) {
     const {id, content} = review
     const [editReview, setEditReview] = useState(false)
     const [editContent, setEditContent] = useState(content)
+    const [errors, setErrors] = useState([])
 
     // function handleSubmit(e) {
     //     e.preventDefault()
@@ -31,6 +32,8 @@ function Review({review, handleDeleteReview}) {
         }).then((r) => {
             if (r.ok) {
                 handleDeleteReview(id);
+            } else {
+                r.json().then((err)=>setErrors(err.errors))
             }
         });
         
@@ -55,6 +58,8 @@ return (
         
         <button onClick={() => setEditReview(!editReview)}>Edit Review</button>
         <button onClick={deleteReview}>Delete</button>
+        <br></br>
+        <p>{errors}</p>
         
         
   

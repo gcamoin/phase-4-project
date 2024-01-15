@@ -7,6 +7,7 @@ import Logout from "/home/gcamoin/phase-4-project/client/src/components/Logout.j
 import { Routes, Route } from "react-router-dom";
 import NavBar from "/home/gcamoin/phase-4-project/client/src/components/NavBar.js"
 import About from "/home/gcamoin/phase-4-project/client/src/components/About.js"
+import Contact from "/home/gcamoin/phase-4-project/client/src/components/Contact.js"
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
       <Logout user={user} setUser={setUser}/>
       <Routes>
        <Route path="/about" element={<About/>} /> 
+       <Route path="/contact" element={<Contact />} />
        <Route path="/" element={<RestaurantContainer/>} />
       </Routes>
       
