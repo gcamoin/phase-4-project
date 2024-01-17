@@ -5,7 +5,7 @@ import AddReviewForm from "/home/gcamoin/phase-4-project/client/src/components/A
 
 
 
-function RestaurantCard({restaurant, handleAddReview, handleDeleteReview}) {
+function RestaurantCard({restaurant, handleAddReview, handleDeleteReview, handleUpdateReview}) {
     const {name, cuisine_type, rating, image, reviews} = restaurant
 
     const restaurantReviews = reviews?.map((review) => (
@@ -13,6 +13,8 @@ function RestaurantCard({restaurant, handleAddReview, handleDeleteReview}) {
             key={review.id}
             review={review}
             handleDeleteReview={handleDeleteReview}
+            handleUpdateReview={handleUpdateReview}
+            restaurantID={restaurant.id}
 
         />
     ))

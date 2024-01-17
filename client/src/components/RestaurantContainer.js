@@ -16,7 +16,7 @@ console.log(restaurants)
             key={restaurant.id}
             restaurant={restaurant}
             handleAddReview={handleAddReview}
-            // handleUpdateReview={handleUpdateReview}
+            handleUpdateReview={handleUpdateReview}
             handleDeleteReview={handleDeleteReview}
         
         />
@@ -42,33 +42,12 @@ console.log(restaurants)
         
 
     }
-
-    // function handleUpdateReview(reviewToUpdate) {
-    //     const updatedReviewArray = restaurants.map((restaurant) => {
-    //        if() {
-    //       const updatedReviews = restaurant.reviews.map((review) => {
-    //         if(restaurant.id === reviewToUpdate.restaurant_id) {
-    //           return reviewToUpdate
-    //         } else {
-    //           return review
-    //         }
-    //       })
-    //       const updatedRestaurant = {...restaurant, reviews:updatedReviews}
-    //     return updatedRestaurant
-          
-    //     } else {
-    //       return restaurant
-    //     }}
-          
-    //   )
-    //     setRestaurants(updatedReviewArray)
-    //   }
-
-    function handleDeleteReview(reviewToDelete) {
-        console.log(reviewToDelete)
+    
+    function handleDeleteReview(reviewToDeleteID) {
+        console.log(reviewToDeleteID)
         const updatedRestaurants = restaurants.map((restaurant) => {
-            if(restaurant.id === reviewToDelete.review_id) {
-                const updatedReviews = restaurant.reviews.filter((review) => reviewToDelete.id !== review.id)
+            if(restaurant.id === reviewToDeleteID.restaurant_id) {
+                const updatedReviews = restaurant.reviews.filter((review) => reviewToDeleteID.id !== review.id)
                 const updatedRestaurant = {...restaurant, reviews:updatedReviews}
                 return updatedRestaurant
 
@@ -80,6 +59,28 @@ console.log(restaurants)
         setRestaurants(updatedRestaurants)
         
     }
+
+    function handleUpdateReview(reviewToUpdate) {
+        const updatedReviewArray = restaurants.map((restaurant) => {
+           if(restaurant.id === reviewToUpdate.restaurant_id) {
+          const updatedReviews = restaurant.reviews.map((review) => {
+            if(restaurant.id === reviewToUpdate.restaurant_id) {
+              return reviewToUpdate
+            } else {
+              return review
+            }
+          })
+          const updatedRestaurant = {...restaurant, reviews:updatedReviews}
+        return updatedRestaurant
+          
+        } else {
+          return restaurant
+        }}
+          
+      )
+        setRestaurants(updatedReviewArray)
+      }
+
 
 
     return (

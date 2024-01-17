@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
     end
 
     def update
-        review = Review.find_by(id: params[:id])
+        review = @current_user.reviews.find_by(id: params[:id])
         if review
             review.update(review_params)
             render json: review
@@ -43,6 +43,6 @@ class ReviewsController < ApplicationController
     private
 
     def review_params
-        params.permit(:content, :restaurant_id)
+        params.permit(:content, :restaurant_id, :editContent)
     end
 end

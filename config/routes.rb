@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :reviews, only: [:index, :show, :create, :update, :destroy]
+  resources :reviews
   resources :restaurants, only: [:index, :show, :create]
   resources :users, only: [:index, :show, :create]
 
@@ -8,5 +8,7 @@ Rails.application.routes.draw do
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+  
+  
   
 end

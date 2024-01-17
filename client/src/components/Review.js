@@ -1,29 +1,36 @@
 import {React, useState} from "react"
 
 
-function Review({review, handleDeleteReview}) {
+function Review({review, handleDeleteReview, handleUpdateReview, restaurantID}) {
     const {id, content} = review
     const [editReview, setEditReview] = useState(false)
     const [editContent, setEditContent] = useState(content)
     const [errors, setErrors] = useState([])
 
-    // function handleSubmit(e) {
-    //     e.preventDefault()
-    //     fetch(`/reviews/${id}`, {
-    //         method: "PATCH",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({
-    //             content: editContent
-               
-    
-    //         })
-    //     })
-    //     .then((r) => r.json())
-    //     .then((updatedMovie) => handleUpdateMovie(updatedMovie));
-    //     setEditMovie(false)
-    // }
+    function handleSubmit(e) {
+        e.preventDefault()
+        fetch(`/reviews/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                content: editContent,
+                restaurant_id: restaurantID
+            })
+        }).then((r) => { 
+            // console.log(editContent)
+            if(r.ok) {
+              r.json().then((updatedReview) => handleUpdateReview(updatedReview));
+            } else {
+              r.json().then((err)=>setErrors(err.errors))
+              console.log(errors)
+            }
+  
+          })
+        
+        
+    }
 
 
     function deleteReview() {
@@ -31,18 +38,19 @@ function Review({review, handleDeleteReview}) {
             method: "DELETE",
         }).then((r) => {
             if (r.ok) {
-                handleDeleteReview(id);
-            } else {
-                r.json().then((err)=>setErrors(err.errors))
+                handleDeleteReview(review)
+           
             }
         });
         
     }
 
+   
+
 
 return (
     <div className= 'movie-details'>
-       { editReview ? <form >
+       { editReview ? <form onSubmit={handleSubmit}>
                 <input
                     type="text"
                     value={editContent}
