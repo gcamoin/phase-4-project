@@ -5,6 +5,7 @@ import App from '/home/gcamoin/phase-4-project/client/src/components/App.js';
 import reportWebVitals from './reportWebVitals';
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
+import { UserProvider } from "/home/gcamoin/phase-4-project/client/src/components/contexts/UserContext.js"
 
 
 
@@ -12,7 +13,9 @@ import { BrowserRouter } from "react-router-dom";
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-    <App />
+      <UserProvider>
+        <App />
+      </UserProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

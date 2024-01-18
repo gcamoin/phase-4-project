@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import {UserContext} from "/home/gcamoin/phase-4-project/client/src/components/contexts/UserContext.js"
 
 
-
-function SignUp({onLogin}) {
+function SignUp({}) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [passwordConfirmation, setPasswordConfirmation] = useState("")
     const [errors, setErrors] = useState([])
+    const {setUser} = useContext(UserContext)
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -23,7 +24,7 @@ function SignUp({onLogin}) {
             }),
         }).then((r) => { 
           if(r.ok) {
-            r.json().then((user) => onLogin(user));
+            r.json().then((user) => setUser(user));
           } else {
             r.json().then((err)=>setErrors(err.errors))
           }

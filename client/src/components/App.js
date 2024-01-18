@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, {useEffect, useState, useContext} from "react"
 import Header from "/home/gcamoin/phase-4-project/client/src/components/Header.js"
 import RestaurantContainer from "/home/gcamoin/phase-4-project/client/src/components/RestaurantContainer.js"
 import Login from "/home/gcamoin/phase-4-project/client/src/components/Login.js"
@@ -8,24 +8,14 @@ import { Routes, Route } from "react-router-dom";
 import NavBar from "/home/gcamoin/phase-4-project/client/src/components/NavBar.js"
 import About from "/home/gcamoin/phase-4-project/client/src/components/About.js"
 import Contact from "/home/gcamoin/phase-4-project/client/src/components/Contact.js"
+import { UserContext } from "/home/gcamoin/phase-4-project/client/src/components/contexts/UserContext.js"
+
 
 
 function App() {
+  const {user, setUser} = useContext(UserContext)
  
-
-  const [user, setUser] = useState(null);
-
-  
-
-  useEffect(() => {
-    fetch("/me").then((response) => {
-      if (response.ok) {
-        response.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
-
-  if (user) {
+if (user) {
     return ( 
     <div className="logged-in page">
       <Header/>
