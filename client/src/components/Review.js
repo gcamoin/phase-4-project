@@ -29,10 +29,11 @@ function Review({review, handleDeleteReview, handleUpdateReview, restaurantID}) 
   
           })
         
-        
+        setEditReview(false)
     }
 
 
+    console.log(errors)
     function deleteReview() {
         fetch(`/reviews/${id}`, {
             method: "DELETE",
@@ -40,6 +41,9 @@ function Review({review, handleDeleteReview, handleUpdateReview, restaurantID}) 
             if (r.ok) {
                 handleDeleteReview(review)
            
+            } else {
+                r.json().then((err)=>{console.log(err)
+                    setErrors(err.error)})
             }
         });
         

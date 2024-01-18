@@ -26,6 +26,7 @@ function AddReviewForm({handleAddReview, restaurantID}) {
         })
         .then((r) => r.json())
         .then((reviewToAdd) => handleAddReview(reviewToAdd))
+        setContent("")
         
     }
 

@@ -44,7 +44,7 @@ console.log(restaurants)
     }
     
     function handleDeleteReview(reviewToDeleteID) {
-        console.log(reviewToDeleteID)
+        // console.log(reviewToDeleteID)
         const updatedRestaurants = restaurants.map((restaurant) => {
             if(restaurant.id === reviewToDeleteID.restaurant_id) {
                 const updatedReviews = restaurant.reviews.filter((review) => reviewToDeleteID.id !== review.id)
@@ -55,30 +55,31 @@ console.log(restaurants)
                 return restaurant
             }
         })
-        console.log(updatedRestaurants)
+        // console.log(updatedRestaurants)
         setRestaurants(updatedRestaurants)
         
     }
 
     function handleUpdateReview(reviewToUpdate) {
-        const updatedReviewArray = restaurants.map((restaurant) => {
+        console.log(reviewToUpdate)
+        const updatedRestaurantsArray = restaurants.map((restaurant) => {
            if(restaurant.id === reviewToUpdate.restaurant_id) {
-          const updatedReviews = restaurant.reviews.map((review) => {
-            if(restaurant.id === reviewToUpdate.restaurant_id) {
-              return reviewToUpdate
-            } else {
-              return review
-            }
-          })
-          const updatedRestaurant = {...restaurant, reviews:updatedReviews}
-        return updatedRestaurant
+                    const updatedReviews = restaurant.reviews.map((review) => {
+                        if(review.id === reviewToUpdate.id) {
+                        return reviewToUpdate
+                        } else {
+                        return review
+                        }
+                    })
+                        const updatedRestaurant = {...restaurant, reviews:updatedReviews}
+                        return updatedRestaurant
           
-        } else {
-          return restaurant
-        }}
+            } else {
+            return restaurant
+            }}
           
       )
-        setRestaurants(updatedReviewArray)
+        setRestaurants(updatedRestaurantsArray)
       }
 
 
