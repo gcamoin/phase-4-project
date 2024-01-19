@@ -23,8 +23,9 @@ function Review({review, handleDeleteReview, handleUpdateReview, restaurantID}) 
             if(r.ok) {
               r.json().then((updatedReview) => handleUpdateReview(updatedReview));
             } else {
-              r.json().then((err)=>setErrors(err.errors))
-              console.log(errors)
+              r.json().then((err) =>{
+                setErrors(err.error)})
+              
             }
   
           })
@@ -42,7 +43,7 @@ function Review({review, handleDeleteReview, handleUpdateReview, restaurantID}) 
                 handleDeleteReview(review)
            
             } else {
-                r.json().then((err)=>{console.log(err)
+                r.json().then((err)=>{
                     setErrors(err.error)})
             }
         });
@@ -71,7 +72,7 @@ return (
         <button onClick={() => setEditReview(!editReview)}>Edit Review</button>
         <button onClick={deleteReview}>Delete</button>
         <br></br>
-        <p>{errors}</p>
+        <p style={{color: "red"}}>{errors}</p>
         
         
   

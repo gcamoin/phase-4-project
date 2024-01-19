@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
             review.update(review_params)
             render json: review
         else
-            render json: { error: "Review not found"}, status: :not_found
+            render json: { error: "not authorized"}, status: :not_found
         end
     end
 
