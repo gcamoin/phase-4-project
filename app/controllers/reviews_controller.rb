@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
     end
 
     def show
-        reviews = Review.all
+        reviews = Review.all.find_by(params[:id])
         render json: reviews
         
     end

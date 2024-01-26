@@ -33,9 +33,9 @@ if (user) {
     return (
      <div className="login-page">
       <Header/>
-      <Login onLogin={setUser} /> 
+      <Login  /> 
       <br></br> 
-      <SignUp onLogin={setUser}/>
+      <SignUp />
       </div>
     )
   }

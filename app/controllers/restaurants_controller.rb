@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-
+    skip_before_action :authorize, only: [:show, :challenge]
 
     def index
         restaurants = Restaurant.all
@@ -8,7 +8,7 @@ class RestaurantsController < ApplicationController
     end
 
     def show
-        restaurant = Restaurant.all(id: params[:id])
+        restaurant = Restaurant.find_by(id: params[:id])
         if restaurant
             render json: restaurant, include: ['reviews', 'reviews.user']
         else
@@ -24,4 +24,7 @@ class RestaurantsController < ApplicationController
             render json: {errors: restaurant.errors.full_messages}, status: :unprocessable_entity
         end
     end
+
+
+    
 end
