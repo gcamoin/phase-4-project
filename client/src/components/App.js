@@ -9,6 +9,7 @@ import NavBar from "/home/gcamoin/phase-4-project/client/src/components/NavBar.j
 import About from "/home/gcamoin/phase-4-project/client/src/components/About.js"
 import Contact from "/home/gcamoin/phase-4-project/client/src/components/Contact.js"
 import { UserContext } from "/home/gcamoin/phase-4-project/client/src/components/contexts/UserContext.js"
+import Profile from "/home/gcamoin/phase-4-project/client/src/components/Profile.js"
 
 
 
@@ -25,6 +26,7 @@ if (user) {
        <Route path="/about" element={<About/>} /> 
        <Route path="/contact" element={<Contact />} />
        <Route path="/" element={<RestaurantContainer/>} />
+       <Route path="/me" element={<Profile user={user}/>} />
       </Routes>
       
     </div>

@@ -4,6 +4,7 @@ import {React, useState} from "react"
 function AddReviewForm({handleAddReview, restaurantID}) {
 
     const [content, setContent] = useState("")
+    const [errors, setErrors] = useState([])
     
 
     
@@ -24,9 +25,15 @@ function AddReviewForm({handleAddReview, restaurantID}) {
                 
                 }),
         })
-        .then((r) => r.json())
-        .then((reviewToAdd) => handleAddReview(reviewToAdd))
-        setContent("")
+        .then((r) => { 
+            if(r.ok) {
+              r.json().then((reviewToAdd) => handleAddReview(reviewToAdd));
+            } else {
+              r.json().then((err)=>setErrors(err.errors))
+            }
+  
+          })
+          setContent("")
         
     }
 
@@ -42,6 +49,7 @@ function AddReviewForm({handleAddReview, restaurantID}) {
                 />
             
             <button>submit</button>
+            <p style={{color: "red"}}>{errors}</p>
             </form>
 
         </div>

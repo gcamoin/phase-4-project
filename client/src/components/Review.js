@@ -24,7 +24,7 @@ function Review({review, handleDeleteReview, handleUpdateReview, restaurantID}) 
               r.json().then((updatedReview) => handleUpdateReview(updatedReview));
             } else {
               r.json().then((err) =>{
-                setErrors(err.error)})
+                setErrors(err.errors)})
               
             }
   

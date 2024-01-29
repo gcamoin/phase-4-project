@@ -1,10 +1,13 @@
-import {React, useState, useEffect} from "react"
+import {React, useState, useEffect, useContext} from "react"
 import RestaurantCard from "/home/gcamoin/phase-4-project/client/src/components/RestaurantCard.js"
 import AddRestaurantForm from "/home/gcamoin/phase-4-project/client/src/components/AddRestaurantForm.js";
+import {UserContext} from "/home/gcamoin/phase-4-project/client/src/components/contexts/UserContext.js"
+
 
 function RestaurantContainer({}) {
     const [restaurants, setRestaurants] = useState([])
-console.log(restaurants)
+    const {setUser, user} = useContext(UserContext)
+
     useEffect(() => {
       fetch("/restaurants")
       .then((r) => r.json())
@@ -39,9 +42,26 @@ console.log(restaurants)
         })
         
         setRestaurants(updatedRestaurants)
-        
+        // user adds review and once they add a review their list of restaurants they have left reviews on updates to include the new restaurant
 
-    }
+        // make copy of user
+        // why am i making copy of user
+        // go to restaurants key
+    //    add new restaurant 
+        // where does the restaurant come from
+        // What am i adding the new restaurant to
+        // update state of user
+        // copy of user with a key of restaurants they have reviewed
+        const reviewedRestaurants = [...user.restaurants, reviewToAdd.restaurant ]
+        const userObject = {...user, restaurants: reviewedRestaurants}
+        // array of restaurants that a user has reviewed
+        
+        setUser(userObject)
+        
+        
+        
+            }
+            
     
     function handleDeleteReview(reviewToDeleteID) {
         // console.log(reviewToDeleteID)
@@ -57,6 +77,11 @@ console.log(restaurants)
         })
         // console.log(updatedRestaurants)
         setRestaurants(updatedRestaurants)
+
+        const updatedReviewedRestaurants = user.restaurants.filter((restaurant) => reviewToDeleteID.restaurant_id !== restaurant.id)
+        const userObject = {...user, restaurants: updatedReviewedRestaurants}
+
+        setUser(userObject)
         
     }
 
@@ -87,6 +112,7 @@ console.log(restaurants)
     return (
         <div className="restaurant_list">
             <AddRestaurantForm handleAddRestaurant={handleAddRestaurant}/>
+           
             {restaurantList}
         </div>
     )

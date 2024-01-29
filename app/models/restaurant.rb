@@ -5,4 +5,5 @@ class Restaurant < ApplicationRecord
     validates :name, presence: true
     validates :cuisine_type, presence: true
     validates :image, presence: true
+    
 end

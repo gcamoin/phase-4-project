@@ -4,6 +4,7 @@ function AddRestaurantForm({handleAddRestaurant}) {
     const [name, setName] = useState("")
     const [cuisineType, setCuisineType] = useState("")
     const [image, setImage] = useState("")
+    const [errors, setErrors] = useState([])
 
     function onChangeName(e) {
         setName(e.target.value)
@@ -31,15 +32,20 @@ function AddRestaurantForm({handleAddRestaurant}) {
                 cuisine_type: cuisineType,
                 image: image
                 
-                
-                
-               
-
-
             }),
         })
-        .then((r) => r.json())
-        .then((restaurantToAdd) => handleAddRestaurant(restaurantToAdd))
+        .then((r) => { 
+            if(r.ok) {
+              r.json().then((restaurantToAdd) => handleAddRestaurant(restaurantToAdd));
+            } else {
+              r.json().then((err)=>setErrors(err.errors))
+            }
+  
+          })
+
+          setName("")
+          setCuisineType("")
+          setImage("")
         
     }
 
@@ -69,6 +75,8 @@ function AddRestaurantForm({handleAddRestaurant}) {
                     onChange={onChangeImage}
                 />
                 <button>Add Restaurant!</button>
+               
+                {errors.map((error) => <p style={{color: "red"}}>{error}</p>)}
             </form>
         </div>
     )
